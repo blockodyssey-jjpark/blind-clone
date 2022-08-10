@@ -1,0 +1,75 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "order/properties-order": [
+      [
+        {
+          "groupName": "dimensions",
+          "properties": ["width", "height"]
+        },
+        {
+          "groupName": "padding",
+          "properties": ["padding", "padding-top", "padding-right", "padding-bottom", "padding-left"]
+        },
+        {
+          "groupName": "margin",
+          "properties": ["margin", "margin-top", "margin-right", "margin-bottom", "margin-left"]
+        },
+        {
+          "groupName": "position",
+          "properties": ["position", "top", "right", "left", "bottom"]
+        },
+        {
+          "groupName": "font",
+          "properties": [
+            "color",
+            "font",
+            "font-size",
+            "font-weight",
+            "font-family",
+            "line-height",
+            "letter-spacing",
+            "text-decoration"
+          ]
+        },
+        {
+          "groupName": "background",
+          "properties": ["background", "background-color", "background-image", "background-size", "background-position"]
+        },
+        {
+          "groupName": "transition",
+          "properties": [
+            "transition",
+            "transition-property",
+            "transition-duration",
+            "transition-timing-function",
+            "transition-delay"
+          ]
+        },
+        {
+          "groupName": "transform",
+          "properties": [
+            "translate",
+            "transform",
+            "transform-translateX",
+            "transform-translateY",
+            "transform-scale",
+            "transform-scaleX",
+            "transform-scaleY",
+            "transform-skew",
+            "transform-skewX",
+            "transform-skewY",
+            "transform-rotate"
+          ]
+        },
+        {
+          "groupName": "display",
+          "properties": ["display", "flex", "flex-direction", "flex-wrap", "justify-content", "align-items"]
+        }
+      ],
+      { "unspecified": "bottomAlphabetical" }
+    ]
+  }
+}
