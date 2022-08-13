@@ -1,5 +1,7 @@
 import { Provider } from 'jotai';
 
+import Layout from 'components/Layout';
+
 import '../styles/globals.css';
 
 import type { AppProps } from 'next/app';
@@ -7,7 +9,9 @@ import type { AppProps } from 'next/app';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   );
 }
