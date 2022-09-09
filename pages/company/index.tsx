@@ -1,4 +1,4 @@
-import BarChart from 'components/d3/BarChart';
+import { BarChart, DonutChart } from '@d3';
 
 import barChart from './data/barChart';
 
@@ -8,6 +8,7 @@ const Company: NextPage = () => {
   return (
     <div>
       <BarChart data={barChart.data} style={barChart.style} />
+      <DonutChart />
     </div>
   );
 };
