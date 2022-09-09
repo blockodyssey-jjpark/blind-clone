@@ -1,7 +1,15 @@
+import BarChart from 'components/d3/BarChart';
+
+import barChart from './data/barChart';
+
 import type { NextPage } from 'next';
 
 const Company: NextPage = () => {
-  return <div>기업 리뷰</div>;
+  return (
+    <div>
+      <BarChart data={barChart.data} style={barChart.style} />
+    </div>
+  );
 };
 
 export default Company;

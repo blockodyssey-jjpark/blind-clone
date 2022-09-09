@@ -1,40 +1,15 @@
 import * as d3 from 'd3';
 import { useCallback, useEffect } from 'react';
 
-interface IData {
-  label: string;
-  value: number;
-}
-
-interface IStyle {
-  fill?: string;
-  radius?: number;
-  filter?: string;
-}
-
-interface IProps {
-  width: number;
-  height: number;
-  data: IData[];
-  style: IStyle;
-  gap?: number;
-  marginLeft?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginTop?: number;
-}
+import { Chart } from '../type';
 
 const BarChart = ({
-  width,
-  height,
   data,
-  style,
-  gap = 0,
-  marginLeft = 10,
-  marginRight = 10,
-  marginBottom = 20,
-  marginTop = 0,
-}: IProps) => {
+  style: {
+    canvas: { width, height, marginTop, marginBottom, marginLeft, marginRight },
+    bar: { gap, fill, filter, radius },
+  },
+}: Chart) => {
   const maxSumValue = d3.max(data.map((d) => d.value)) ?? 0;
 
   const yDomain = [0, maxSumValue]; // [ymin, ymax]
@@ -50,32 +25,38 @@ const BarChart = ({
       selection
         .attr('width', getWidth)
         .attr('height', (d: any) => {
-          return yScale(0) - yScale(d.value);
+          return yScale(0) - yScale(d.value) - 4;
         })
         .attr('x', getX)
         .attr('y', (d: any) => {
           return yScale(d.value);
         })
-        .attr('fill', style.fill ?? 'transparent')
-        .attr('rx', style.radius ?? 0)
-        .attr('filter', style.filter ?? '');
+        .attr('fill', fill ?? 'transparent')
+        .attr('rx', radius ?? 0)
+        .attr('filter', filter ?? '');
     },
-    [getWidth, getX, style.fill, style.filter, style.radius, yScale],
+    [fill, filter, getWidth, getX, radius, yScale],
   );
 
-  useEffect(() => {
-    const svg = d3
-      .select('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .attr('viewBox', [0, 0, width, height])
-      .selectAll('g')
-      .data(data)
-      .enter();
+  const xDomain = new d3.InternSet(d3.map(data, (d) => d.label));
+  const xRange = [marginLeft, width - marginRight];
 
-    const groups = svg.append('g');
-    groups.append('rect').call(drawBar);
-  }, [data, drawBar, height, width]);
+  const xScale = d3.scaleBand(xDomain, xRange).padding(0);
+  const xAxis = d3.axisBottom(xScale);
+
+  useEffect(() => {
+    const svg = d3.select('svg').attr('width', width).attr('height', height).attr('viewBox', [0, 0, width, height]);
+
+    svg.selectAll('_bar').data(data).enter().append('g').append('rect').call(drawBar);
+
+    const axis = svg.append('g').call(xAxis);
+    axis
+      .attr('color', '#545454')
+      .attr('font-size', '12')
+      .attr('font-weight', '400')
+      .attr('transform', `translate(0,${height - marginBottom})`);
+    axis.selectAll('path, line').attr('stroke', 'transparent');
+  }, [data, drawBar, height, marginBottom, width, xAxis]);
 
   return (
     <div>
