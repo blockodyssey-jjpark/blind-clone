@@ -1,4 +1,4 @@
-import { Chart } from 'components/d3/type';
+import { Chart } from '@d3/type';
 
 const data = [
   { label: '1월', value: 638789 },
