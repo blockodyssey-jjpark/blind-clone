@@ -1,4 +1,4 @@
-import { IChart as IPieChart } from './DonutChart/type';
+import { IChart as IPieChart } from './PieChart/type';
 
 const checkError = (type: string, props: any) => {
   const pieRequiredProps: IPieChart = {

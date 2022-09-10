@@ -11,9 +11,9 @@ const Company: NextPage = () => {
           Bar Chart
         </a>
       </Link>
-      <Link href="/chart/donut">
+      <Link href="/chart/pie">
         <a className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700">
-          Donut Chart
+          Pie / Donut Chart
         </a>
       </Link>
     </div>

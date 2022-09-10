@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 interface IData {
   value: number;
   label: string;

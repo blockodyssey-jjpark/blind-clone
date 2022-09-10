@@ -6,7 +6,7 @@ import checkError from '../checkError';
 
 import type { IChart } from './type';
 
-const DonutChart = (props: IChart) => {
+const PieChart = (props: IChart) => {
   checkError('pie', props);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,4 +34,4 @@ const DonutChart = (props: IChart) => {
   return <div ref={containerRef} />;
 };
 
-export default DonutChart;
+export default PieChart;

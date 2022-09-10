@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-import { IData } from './DonutChart/type';
+import { IData } from './PieChart/type';
 
 /**
  * getColor
