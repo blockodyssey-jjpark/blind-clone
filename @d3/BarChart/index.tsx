@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { useCallback, useEffect } from 'react';
 
-import { Chart } from '../type';
+import { IChart } from './type';
 
 const BarChart = ({
   data,
@@ -9,7 +9,7 @@ const BarChart = ({
     canvas: { width, height, marginTop, marginBottom, marginLeft, marginRight },
     bar: { gap, fill, filter, radius },
   },
-}: Chart) => {
+}: IChart) => {
   const maxSumValue = d3.max(data.map((d) => d.value)) ?? 0;
 
   const yDomain = [0, maxSumValue]; // [ymin, ymax]

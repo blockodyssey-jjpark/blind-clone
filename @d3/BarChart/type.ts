@@ -19,7 +19,7 @@ interface IStyle {
   };
 }
 
-export type Chart = {
+export type IChart = {
   data: IData[];
   style: IStyle;
 };

@@ -1,4 +1,4 @@
-import { Chart } from '@d3/type';
+import { IChart } from '@d3/BarChart/type';
 
 const data = [
   { label: '1월', value: 638789 },
@@ -25,7 +25,7 @@ const style = {
   },
 };
 
-const barChart: Chart = {
+const barChart: IChart = {
   data,
   style,
 };
