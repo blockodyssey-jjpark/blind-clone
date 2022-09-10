@@ -1,18 +1,37 @@
-import * as d3 from 'd3';
+import React, { useEffect, useRef } from 'react';
 
-function run() {
-  const population2radius = d3
-    .scaleSqrt() // instead of scaleLinear()
-    .domain([0, 2e9])
-    .range([0, 300]);
+import { createPie, createPieLabel, createSvg } from '@d3/utils';
 
-  console.log(population2radius(427e3));
-}
+import checkError from '../checkError';
 
-const DonutChart = () => {
-  run();
+import type { IChart } from './type';
 
-  return <div />;
+const DonutChart = (props: IChart) => {
+  checkError('pie', props);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { data, width, height, barOptions } = props;
+
+  useEffect(() => {
+    const svg = createSvg({ containerRef, width, height, viewBox: [-width / 2, -height / 2, width, height] });
+
+    createPie({
+      svg,
+      data,
+      barOptions,
+    });
+
+    createPieLabel({
+      svg,
+      data,
+      labelOptions: {
+        innerRadius: barOptions.innerRadius,
+        outerRadius: barOptions.outerRadius,
+      },
+    });
+  }, []);
+
+  return <div ref={containerRef} />;
 };
 
 export default DonutChart;
