@@ -19,8 +19,8 @@ const Company: NextPage = () => {
         width={500}
         height={500}
         barOptions={{
-          innerRadius: 0,
           outerRadius: 200,
+          labelRadius: 70,
           colors: ['rgb(210,0,180)', 'rgb(255,235,255)'],
         }}
       />

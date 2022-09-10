@@ -51,7 +51,7 @@ export function createPie({
   data,
   barOptions: {
     padAngle = 0,
-    innerRadius = 50,
+    innerRadius = 0,
     outerRadius = innerRadius + 100,
     cornerRadius = 0,
     colors = ['black', 'white'],
@@ -86,7 +86,7 @@ type CreatePieLabelParams = {
 export function createPieLabel({
   svg,
   data,
-  labelOptions: { innerRadius = 50, outerRadius = innerRadius + 100 },
+  labelOptions: { innerRadius = 0, outerRadius = innerRadius + 100 },
 }: CreatePieLabelParams) {
   const labelRadius = (innerRadius + outerRadius) / 2;
 

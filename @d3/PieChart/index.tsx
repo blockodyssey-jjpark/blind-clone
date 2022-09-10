@@ -25,7 +25,7 @@ const PieChart = (props: IChart) => {
       svg,
       data,
       labelOptions: {
-        innerRadius: barOptions.innerRadius,
+        innerRadius: barOptions.labelRadius ?? barOptions.innerRadius,
         outerRadius: barOptions.outerRadius,
       },
     });

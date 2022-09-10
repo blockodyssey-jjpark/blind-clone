@@ -11,6 +11,7 @@ interface IChart {
     padAngle?: number;
     innerRadius?: number;
     outerRadius?: number;
+    labelRadius?: number;
     cornerRadius?: number;
     colors?: string[];
   };
