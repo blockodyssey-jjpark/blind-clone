@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
-import { createPie, createPieLabel, createSvg } from '@d3/utils';
+import { createPie, createPieLabel } from '@d3/utils';
+import { createSvg } from '@d3/utils/common';
 
 import checkError from '../checkError';
 

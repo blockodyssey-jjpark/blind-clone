@@ -15,24 +15,6 @@ export function getColorSpectrum(colors: string[]) {
 }
 
 /**
- * createSvg
- */
-type CreateSvgParams = {
-  containerRef: React.RefObject<HTMLDivElement>;
-  width: number;
-  height: number;
-  viewBox: [number, number, number, number];
-};
-export function createSvg({ containerRef, width, height, viewBox }: CreateSvgParams) {
-  return d3
-    .select(containerRef.current)
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .attr('viewBox', viewBox);
-}
-
-/**
  * createPie
  */
 type CreatePieParams = {
@@ -73,7 +55,7 @@ export function createPie({
 }
 
 /**
- * createPie
+ * createPieLabel
  */
 type CreatePieLabelParams = {
   svg: any;
