@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React, { useEffect, useRef } from 'react';
 
-import { createSvg } from '@d3/utils/common';
+import { createSvg, calcAverageGap } from '@d3/utils/common';
 
 import type { IChart } from './type';
 
@@ -9,7 +9,6 @@ const LineChart = (props: IChart) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { data, width, height, xData, yData, xTickFormat, yTickFormat, styles } = props;
 
-  const extra = 1;
   const p = 20; // padding
   const w = width - p * 2;
   const h = height - p * 2;
@@ -19,6 +18,8 @@ const LineChart = (props: IChart) => {
 
     const X = d3.map(data, xData);
     const Y = d3.map(data, yData);
+
+    const extra = calcAverageGap(Y);
 
     const xDomain = [d3.min(X) || 0, d3.max(X) || 0]; // [xmin, xmax]
     const yDomain = [(d3.min(Y) || 0) - extra, (d3.max(Y) || 0) + extra]; // [ymin, ymax]
