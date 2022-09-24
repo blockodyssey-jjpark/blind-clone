@@ -5,11 +5,12 @@ import { createSvg, calcAverageGap } from '@d3/utils/common';
 
 import type { IChart } from './type';
 
+// TODO: 레이블의 너비, 높이와 그래프에 대한 padding 구분하여 크기 계산
 const LineChart = (props: IChart) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { data, width, height, xData, yData, xTickFormat, yTickFormat, styles } = props;
+  const { data, width, height, padding, xData, yData, xTickFormat, yTickFormat, styles } = props;
 
-  const p = 20; // padding
+  const p = padding || 20;
   const w = width - p * 2;
   const h = height - p * 2;
 

@@ -7,6 +7,7 @@ interface IChart {
   data: IData[];
   width: number;
   height: number;
+  padding?: number;
   xData: (d: IData, i: number) => number;
   yData: (d: IData, i: number) => number;
   xTickFormat?: (d: number, i: number) => string;
