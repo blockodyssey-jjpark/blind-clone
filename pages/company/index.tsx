@@ -16,6 +16,11 @@ const Company: NextPage = () => {
           Pie / Donut Chart
         </a>
       </Link>
+      <Link href="/chart/line">
+        <a className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700">
+          Line Chart
+        </a>
+      </Link>
     </div>
   );
 };
