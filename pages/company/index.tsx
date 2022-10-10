@@ -21,6 +21,11 @@ const Company: NextPage = () => {
           Line Chart
         </a>
       </Link>
+      <Link href="/chart/scatter">
+        <a className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700">
+          Scatter Chart
+        </a>
+      </Link>
     </div>
   );
 };
