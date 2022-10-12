@@ -36,7 +36,7 @@ const Canvas = () => {
     ctx?.clearRect(0, 0, canvasW, canvasH);
 
     images.map((image, index) => {
-      if (images.length === index + 1) {
+      if (index === selectedImage) {
         printImage(image, true);
         return;
       }
@@ -69,6 +69,7 @@ const Canvas = () => {
   );
 
   // 좌표값 계산
+  const [selectedImage, setSelectedImage] = useState(-1);
   useEffect(() => {
     if (images.length === 0) return;
 
@@ -88,7 +89,7 @@ const Canvas = () => {
         return;
       }
 
-      const isSelected = (image: IDrawnImage) => {
+      const searchSelected = (image: IDrawnImage) => {
         return (
           image.x <= x &&
           image.y <= y &&
@@ -96,7 +97,8 @@ const Canvas = () => {
           image.y + image.height >= y
         );
       };
-      bringForward(images.findIndex(isSelected));
+      setSelectedImage(images.findIndex(searchSelected));
+      bringForward(images.findIndex(searchSelected));
     }
   }, [mouseCoord]);
 
