@@ -128,9 +128,8 @@ const Canvas = () => {
   //   }
   // };
 
-  const toImage = () => {
-    const url = canvas.current?.toDataURL("image/jpeg", 1.0);
-    console.log(url);
+  const saveImage = (event) => {
+    event.target.href = canvas.current?.toDataURL("image/png", 1.0);
   };
 
   return (
@@ -151,9 +150,9 @@ const Canvas = () => {
       {/* <button type="button" onClick={uploadBackgroundImage}>
         add image
       </button> */}
-      <button type="button" onClick={toImage}>
-        canvas to image
-      </button>
+      <a href="" download="my_painting.png" onClick={saveImage}>
+        다운로드
+      </a>
       <StickerList images={images} setImages={setImages} />
     </div>
   );
